@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: painter_guy_development
+
+test:
+  adapter: postgresql
+  database: painter_guy_test
+
