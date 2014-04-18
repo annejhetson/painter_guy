@@ -13,4 +13,14 @@ class UserMailer < ActionMailer::Base
 
     mail to: @user.email, cc: @admin.email, subject: "Sign up confirmation"
   end
+
+  def send_comment(object)
+    @object = object
+    @comment = @object.comment
+    @email = @object.email
+    @name = @object.name
+
+    mail to: "admin@admin.com", subject: "Got an inquiry for your web site"
+  end
+
 end

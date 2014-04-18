@@ -2,5 +2,9 @@ PainterGuy::Application.routes.draw do
   devise_for :users
   devise_for :admins
   root to: 'jobs#index'
-  get '/contacts', to: 'users#contact'
+
+  resources :bookings
+  get '/contacts', to: 'bookings#contact'
+  post '/contacts', to: 'bookings#comment'
+
 end
