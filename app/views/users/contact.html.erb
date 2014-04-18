@@ -1,0 +1,8 @@
+Contact page
+
+<%= form_for :user do |f| %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.submit "Submit Comment" %>
+<% end %>

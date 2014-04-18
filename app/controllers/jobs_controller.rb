@@ -5,8 +5,6 @@ def index
 
 end
 
-def contact
-  render "contact.html.erb"
-end
+
 
 end
