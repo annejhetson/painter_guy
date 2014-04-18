@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
 
 
 
@@ -24,6 +25,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'pry'
+  gem 'letter_opener'
 end
 
 group :test do

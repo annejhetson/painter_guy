@@ -29,4 +29,6 @@ PainterGuy::Application.configure do
 
   #Define default URL
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  #set delivery method
+  config.action_mailer.delivery_method = :letter_opener
 end
