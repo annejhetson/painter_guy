@@ -23,4 +23,13 @@ class UserMailer < ActionMailer::Base
     mail to: "admin@admin.com", subject: "Got an inquiry for your web site"
   end
 
+  def booking_confirmation(object)
+    @object = object
+    @comment = @object.comment
+    @email = @object.email
+    @name = @object.name
+
+    mail to: "admin@admin.com", subject: "Got an inquiry for your web site"
+  end
+
 end

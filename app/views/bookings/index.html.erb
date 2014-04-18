@@ -1,1 +1,11 @@
 <h2>Need to book a paint job?</h2>
+<h2><%= link_to "Click Here", new_booking_path %></h2>
+
+<%= calendar @bookings do |booking| %>
+  <div><%= link_to booking.name, booking %></div>
+<% end %>
+
+<%= current_user.id %>
+
+
+

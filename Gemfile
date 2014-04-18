@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
+gem 'simple_calendar'
 
 
 
