@@ -10,11 +10,11 @@ class BookingsController <ApplicationController
   end
 
   def create
-    @booking = Booking.new(params.require(:booking).permit(:comment, :name, :start_time, :user_id, :email))
+    @booking = Booking.new(params.require(:booking).permit(:comment, :name, :start_time, :user_id, :email, :time))
     if @booking.save
       flash[:notice] = "Your booking has been submitted"
       UserMailer.booking_confirmation(@booking).deliver
-      redirect_to root_url
+      redirect_to bookings_path
     else
       render new_booking_path
     end
