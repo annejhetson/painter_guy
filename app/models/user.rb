@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :jobs
   has_many :bookings
+  has_one :profile
 
   after_create :send_confirmation_email
 

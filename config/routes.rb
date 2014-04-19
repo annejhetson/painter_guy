@@ -5,6 +5,7 @@ PainterGuy::Application.routes.draw do
 
   resources :users do
   	resources :bookings, :only => :show
+  	resources :profiles
   end
 
   resources :bookings, :except => :show 

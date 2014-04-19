@@ -35,7 +35,7 @@
     <div><%= f.submit "Book It!" %></div>
   <% end %>
 <% else %>
-  <h3>Please login to book a job with us</h3>
+  <h3>Please <%= link_to "login", new_user_session_path %> to book a job with us</h3>
   <%= link_to "Leave us a comment", "/contacts" %>
 <% end %>
 

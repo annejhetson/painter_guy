@@ -1,0 +1,23 @@
+<% if current_user == nil %>
+	<p>You don't have pemission to view this page</p>
+	<%= link_to "Sign In", new_user_session_path %> to access your profile <br>
+	<%= link_to "Sign Up", new_user_registration_path %> to create a new login
+
+<% elsif current_user.id != params[:user_id].to_i %>
+	This is not your profile
+<% elsif @profile == nil %>
+	<div id="afterprofile">
+		<h4 id="beforeprofile">Seems like you haven't created a profile with us</h4>
+	</div>
+
+	<%= link_to "Create Profile Now", new_user_profile_path, :id => "new_link", :class => "btn btn-success", remote: true %>
+<% else %>
+
+	<p>Name: <%= @profile.user.username %></p>
+	<p>Street: <%= @profile.street %></p>
+	<p>City: <%= @profile.city %></p>
+	<p>State: <%= @profile.state %></p>
+	<p>Zipcode: <%= @profile.zip %></p>
+
+<% end %>
+
