@@ -2,7 +2,7 @@
 <h2><%= link_to "Click Here", new_booking_path %></h2>
 
 <%= calendar @bookings do |booking| %>
-  <div><a href="#"><%= booking.name %>@ <%= booking.time.strftime("%H:%M") %></a></div>
+  <div><a href="/bookings/<%= booking.id %>"><%= booking.name %>@ <%= booking.time.strftime("%H:%M") %></a></div>
 <% end %>
 
 

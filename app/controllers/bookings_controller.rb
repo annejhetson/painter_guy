@@ -9,6 +9,10 @@ class BookingsController <ApplicationController
     @booking = Booking.new
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def create
     @booking = Booking.new(params.require(:booking).permit(:comment, :name, :start_time, :user_id, :email, :time))
     if @booking.save

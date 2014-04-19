@@ -1,0 +1,5 @@
+<h3>Job Name: <%= @booking.name %></h3>
+<p><%= @booking.comment %></p>
+<p><%= @booking.time.strftime("%H:%M") %></p>
+
+<%= link_to "Back", bookings_path %>
