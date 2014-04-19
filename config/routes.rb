@@ -3,7 +3,11 @@ PainterGuy::Application.routes.draw do
   devise_for :admins
   root to: 'jobs#index'
 
-  resources :bookings
+  resources :users do
+  	resources :bookings, :only => :show
+  end
+
+  resources :bookings, :except => :show 
   get '/contacts', to: 'bookings#contact'
   post '/contacts', to: 'bookings#comment'
 

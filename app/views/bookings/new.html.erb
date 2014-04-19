@@ -8,9 +8,17 @@
 
 
 
+
 <% if current_user %>
   <h3>Book a job with us below.</h3>
   <hr>
+
+  <div class="floatright">
+    <%= calendar @bookings do |booking| %>
+      <div><a href="/bookings/<%= booking.id %>"><%= booking.name %>@ <%= booking.time.strftime("%H:%M") %></a></div>
+    <% end %>
+  </div>
+
   <%= form_for @booking, url: bookings_path do |f| %>
     <div><%= f.label :description %><br />
     <%= f.text_area :comment, rows: 6, autofocus: true %></div>

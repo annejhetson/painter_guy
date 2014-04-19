@@ -1,16 +1,34 @@
-
-
 .happyfont {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Sofadi One', sans-serif;
 }
 
 .calendar {
-  width: 80%;
-  height: 500px;
+  width: 700px;
+  height: 400px;
 }
 
 td {
   width: 100px;
 }
 
+.wrapper {
+	width: 70%;
+	margin-left: 200px;
+}
 
+h2 {
+	font-size: 15px;
+}
+
+.floatright .calendar {
+	width: 400px;
+	float: left;
+	margin-right: 200px;
+	
+}
+
+.floatright .calendar h2 {
+	width: 400px;
+	/*position: absolute;
+	right: 500px;*/
+}
