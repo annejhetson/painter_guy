@@ -38,6 +38,7 @@
             <li><%= link_to "Contact Us", contacts_path %></li>
           <% end %>
           <% if admin_signed_in? %>
+            <li><%= link_to "Add Job", "/addjob" %></li>
             <li><%= link_to "Need a Day off", new_booking_path %></li>
           <% end %>
 

@@ -1,0 +1,16 @@
+<h3>Add a new job below</h3>
+
+<%= form_for @job do |f| %>
+	<div><%= f.label :Date %><br />
+	<%= f.date_field :date %></div><br>
+
+    <div><%= f.label "Select client" %><br />
+	<div class="form-group">
+    <% User.all.each do |user| %>
+      <%= check_box_tag :user_id, user.id %>
+      <%= user.username %><br>
+    <% end %>
+  </div>
+
+	<%= f.submit "Submit" , action: jobs_path %>
+<% end %>

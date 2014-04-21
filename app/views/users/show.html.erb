@@ -1,0 +1,17 @@
+<h3><%= @user.username %></h3>
+<h3><%= @user.email %></h3>
+
+<% if @profile %>
+	<div id="profile">
+		<h4>Profile Information</h4>
+		<p>Street: <%= @profile.street %></p>
+		<p>City: <%= @profile.city %></p>
+		<p>State: <%= @profile.state %></p>
+		<p>Zipcode: <%= @profile.zip %></p><br>
+	</div>
+<% else %>
+ <p> No Profile Created for this person <p>
+<% end %>
+
+<% @jobs.each do |job| %>
+	<%= job.date %>
