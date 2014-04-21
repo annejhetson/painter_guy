@@ -10,12 +10,12 @@
 
 
 <% if current_user %>
-  <h3>Book a job with us below.</h3>
+  <h3>Book a job with</h3>
   <hr>
 
   <div class="floatright">
     <%= calendar @bookings do |booking| %>
-      <div><a href="/bookings/<%= booking.id %>"><%= booking.name %>@ <%= booking.time.strftime("%H:%M") %></a></div>
+      <div><a href="/bookings/<%= booking.id %>"><%= booking.name %><% if booking.time != nil %>@ <%= booking.time.strftime("%H:%M") %><% end %></a></div>
     <% end %>
   </div>
 
@@ -28,15 +28,37 @@
     <%= f.date_field :start_time %></div>
     <div><%= f.label :time %><br />
     <%= f.time_field :time %></div>
-
-
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :email, value: current_user.email %>
     <div><%= f.submit "Book It!" %></div>
   <% end %>
+
+<% elsif current_admin %>
+  <h3>Need a day off?</h3>
+  <h3>Let your client know</h3>
+  <hr>
+
+  <div class="floatright">
+    <%= calendar @bookings do |booking| %>
+      <div><a href="/bookings/<%= booking.id %>"><%= booking.name %><% if booking.time != nil %>@ <%= booking.time.strftime("%H:%M") %><% end %></a></div>
+    <% end %>
+  </div>
+
+   <%= form_for @booking, url: bookings_path do |f| %>
+    <div><%= f.label "When do you need time off?" %><br />
+    <%= f.date_field :start_time %></div>
+  
+    <%= f.hidden_field :name, value: "unavailable" %>
+    <%= f.hidden_field :comment, value: "unavailable" %>
+    
+    <div><%= f.submit "Take a day off" %></div>
+   <% end %>
+
 <% else %>
   <h3>Please <%= link_to "login", new_user_session_path %> to book a job with us</h3>
   <%= link_to "Leave us a comment", "/contacts" %>
 <% end %>
+
+
 
 

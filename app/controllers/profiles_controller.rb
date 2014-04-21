@@ -1,8 +1,10 @@
 class ProfilesController <ApplicationController
-	
+
+	def index
+		@profile = Profile.find_by(user_id: params[:user_id])
+	end
 	def new
 		@profile = Profile.new
-		@user = User.find(params[:user_id])
 	end
 
 	def create
@@ -10,8 +12,27 @@ class ProfilesController <ApplicationController
 		if @profile.save
 			redirect_to user_profiles_path
 		else
-			render "new.html.erb"
+			render 'new'
 		end
+	end
+
+	def edit
+		@profile = Profile.find(params[:id])
+	end
+
+	def update
+		@profile = Profile.find(params[:id])
+		if @profile.update(params_profile)
+		  redirect_to user_profiles_path
+		else 
+		  render 'edit'
+		end
+	end
+
+	def destroy
+		@profile = Profile.find(params[:id])
+		@profile.destroy
+		redirect_to user_profiles_path
 	end
 
 	private

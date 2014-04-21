@@ -1,10 +1,18 @@
 .happyfont {
-  font-family: 'Sofadi One', sans-serif;
+  font-family: 'Knewave', cursive;
+  font-size: 30px;
+  position: absolute;
+	top: 20px;
+	left: 100px;
 }
+.tagline {
+	font-family: 'Knewave', cursive;
+	font-size: 13px;
+	position: absolute;
+	  top: 50px;
+	  left: 100px;
 
-.calendar {
-  width: 700px;
-  height: 400px;
+
 }
 
 td {
@@ -14,6 +22,7 @@ td {
 .wrapper {
 	width: 70%;
 	margin-left: 200px;
+	margin-top: 50px;
 }
 
 h2 {
@@ -21,7 +30,7 @@ h2 {
 }
 
 .floatright .calendar {
-	width: 400px;
+	width: 40%;
 	float: left;
 	margin-right: 200px;
 	
@@ -40,4 +49,9 @@ h2 {
 .navbar-default {
 	background-color: white;
 	border-color: white;
+}
+
+#oldprofile {
+	position: auto;
+	width: 30%;
 }

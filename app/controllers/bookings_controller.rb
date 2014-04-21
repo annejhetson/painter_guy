@@ -1,11 +1,7 @@
 class BookingsController <ApplicationController
 
-  def index
-    @bookings = Booking.all
-    @booking = Booking.new
-  end
-
   def new
+    @bookings = Booking.all
     @booking = Booking.new
   end
 
@@ -18,8 +14,10 @@ class BookingsController <ApplicationController
     @booking = Booking.new(params.require(:booking).permit(:comment, :name, :start_time, :user_id, :email, :time))
     if @booking.save
       flash[:notice] = "Your booking has been submitted"
-      UserMailer.booking_confirmation(@booking).deliver
-      redirect_to bookings_path
+      if user_signed_in?
+        UserMailer.booking_confirmation(@booking).deliver
+      end
+      redirect_to new_booking_path
     else
       render new_booking_path
     end
