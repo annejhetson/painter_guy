@@ -17,17 +17,30 @@
 <% else %>
   <div id="oldprofile">
 	<h4>Profile Information</h4>
+	<p>Name: <%= @user.username %> </p>
 	<p>Street: <%= @profile.street %></p>
 	<p>City: <%= @profile.city %></p>
 	<p>State: <%= @profile.state %></p>
-	<p>Zipcode: <%= @profile.zip %></p><br>
-	
+	<p>Zipcode: <%= @profile.zip %></p>
   </div>
-  <hr>
-  <%= link_to "Update Profile", edit_user_profile_path(current_user, @profile), :class => "btn btn-primary", :id => "update_profile" %>
+  <%= link_to "Update Profile", edit_user_profile_path(current_user, @profile), :class => "btn btn-primary", :id => "update_profile", remote: true %>
   <%= link_to "Delete Profile", user_profile_path(current_user, @profile), :class => "btn btn-danger", data: {method: "delete", confirm: "Are you sure?"} %>
 
-  <%#= render @profile %>
+   <hr>
+   <% if !@bookings.nil? %>
+     <h4>Upcoming jobs</h4>
+       <% @bookings.each do |booking| %>
+	       <div class="well">
+	     	  <p><%= booking.start_time.strftime("%a %x") %> @<%= booking.time.strftime("%l:%M %p") %> <%= booking.comment %></p>
+	       </div>
+       <% end %>
+       <h4>Past jobs</h4>
+       <% @oldjobs.each do |booking| %>
+	       <div class="well">
+	     	  <p><%= booking.start_time.strftime("%a %x") %> @<%= booking.time.strftime("%l:%M %p") %> <%= booking.comment %></p>
+	       </div>
+       <% end %>
+   <% end %>
 
-<% end %>
+ <% end %>
 

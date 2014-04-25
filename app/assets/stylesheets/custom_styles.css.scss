@@ -29,17 +29,17 @@ h2 {
 	font-size: 15px;
 }
 
-.floatright .calendar {
-	width: 40%;
-	float: left;
-	margin-right: 200px;
-	
+.bookingcalendar {
+	width: 500px;
 }
 
-.floatright .calendar h2 {
+
+.bookingform{
 	width: 400px;
-	/*position: absolute;
-	right: 500px;*/
+	position: absolute;
+	right: 0px;
+	top: 120px;
+
 }
 
 .logo img {

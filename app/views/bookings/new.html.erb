@@ -10,49 +10,52 @@
 
 
 <% if current_user %>
-  <h3>Book a job with</h3>
-  <hr>
 
-  <div class="floatright">
+  <div class="bookingcalendar">
     <%= calendar @bookings do |booking| %>
       <div><a href="/bookings/<%= booking.id %>"><%= booking.name %><% if booking.time != nil %>@ <%= booking.time.strftime("%H:%M") %><% end %></a></div>
     <% end %>
   </div>
+  <div class="bookingform">
+    <%= form_for @booking, url: bookings_path do |f| %>
+      <div><%= f.label :description %><br />
+      <%= f.text_area :comment, rows: 3, autofocus: true %></div>
+      <div><%= f.label :name %><br />
+      <%= f.text_field :name %></div>
+      <div><%= f.label :date %><br />
+      <%= f.date_field :start_time %></div>
+      <div><%= f.label :time %><br />
+      <%= f.time_field :time %></div>
+      <div><%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :email, value: current_user.email %></div><br>
+      <div><%= f.submit "Book It!", class: "btn btn-success"%></div>
+    <% end %>
+  </div>
 
-  <%= form_for @booking, url: bookings_path do |f| %>
-    <div><%= f.label :description %><br />
-    <%= f.text_area :comment, rows: 6, autofocus: true %></div>
-    <div><%= f.label :name %><br />
-    <%= f.text_field :name %></div>
-    <div><%= f.label :date %><br />
-    <%= f.date_field :start_time %></div>
-    <div><%= f.label :time %><br />
-    <%= f.time_field :time %></div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :email, value: current_user.email %>
-    <div><%= f.submit "Book It!" %></div>
-  <% end %>
+
+
 
 <% elsif current_admin %>
   <h3>Need a day off?</h3>
   <h3>Let your client know</h3>
   <hr>
 
-  <div class="floatright">
+  <div class="bookingcalendar">
     <%= calendar @bookings do |booking| %>
       <div><a href="/bookings/<%= booking.id %>"><%= booking.name %><% if booking.time != nil %>@ <%= booking.time.strftime("%H:%M") %><% end %></a></div>
     <% end %>
   </div>
-
-   <%= form_for @booking, url: bookings_path do |f| %>
-    <div><%= f.label "When do you need time off?" %><br />
-    <%= f.date_field :start_time %></div>
-  
-    <%= f.hidden_field :name, value: "unavailable" %>
-    <%= f.hidden_field :comment, value: "unavailable" %>
+    <div class="bookingform">
+     <%= form_for @booking, url: bookings_path do |f| %>
+      <div><%= f.label "When do you need time off?" %><br />
+      <%= f.date_field :start_time %></div>
     
-    <div><%= f.submit "Take a day off" %></div>
-   <% end %>
+      <%= f.hidden_field :name, value: "X" %>
+      <%= f.hidden_field :comment, value: "X" %>
+      
+      <div><%= f.submit "Take a day off" %></div>
+     <% end %>
+  </div>
 
 <% else %>
   <h3>Please <%= link_to "login", new_user_session_path %> to book a job with us</h3>

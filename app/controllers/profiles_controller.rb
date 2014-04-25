@@ -1,6 +1,9 @@
 class ProfilesController <ApplicationController
 
 	def index
+		@user = User.find(params[:user_id])
+		@bookings = Booking.where("user_id = #{@user.id} and start_time > Time")
+		@oldjobs = Booking.where("user_id = #{@user.id} and start_time < Time")
 		@profile = Profile.find_by(user_id: params[:user_id])
 	end
 	def new
@@ -17,10 +20,12 @@ class ProfilesController <ApplicationController
 	end
 
 	def edit
+		@user = User.find(params[:user_id])
 		@profile = Profile.find(params[:id])
 	end
 
 	def update
+
 		@profile = Profile.find(params[:id])
 		if @profile.update(params_profile)
 		  redirect_to user_profiles_path
