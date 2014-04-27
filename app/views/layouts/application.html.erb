@@ -35,13 +35,13 @@
           </form>
           <% if user_signed_in? %>
             <li><%= link_to "Book Job", new_booking_path %></li>
-            <li><%= link_to "Contact Us", contacts_path %></li>
           <% end %>
           <% if admin_signed_in? %>
             <li><%= link_to "Add Job", "/addjob" %></li>
             <li><%= link_to "Need a Day off", new_booking_path %></li>
           <% end %>
 
+          <li><%= link_to "Contact Us", contacts_path %></li>
           <li class="dropdown">
 
             <a class="dropdown-toggle" data-toggle="dropdown">Manage Account <b class="caret"></b></a>
